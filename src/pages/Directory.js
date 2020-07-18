@@ -15,11 +15,15 @@ class Directory extends Component {
 
     getEmployeeList = () => {
         API.getTwoHundred()
-        .then(res=> this.setState({filteredResults: res.data.results, results: res.data.results}))
-        .catch(err => console.log(err));
+        .then(res => 
+            this.setState({filteredResults: res.data.results, results: res.data.results})
+        )
+        .catch(err => 
+            console.log(err)
+        );
     }
 
-    sortMeUp = (a, b) => {
+    setUpSorter = (a, b) => {
         const nameA = a.name.last.toLowerCase();
         const nameB = b.name.last.toLowerCase();
         let sorter = 0;
@@ -32,32 +36,41 @@ class Directory extends Component {
         return sorter;
     }
 
+    sortMeUp = (a, b) => {
+        let sorter = this.setUpSorter(a, b);
+        sorter *= 1;
+        return sorter;
+    }
+
     sortMeDown = (a, b) => {
-        const nameA = a.name.last.toLowerCase();
-        const nameB = b.name.last.toLowerCase();
-        let sorter = 0;
-        
-        if(nameA > nameB) {
-            sorter = -1;
-        } else if(nameA < nameB) {
-            sorter = 1;
-        }
+        let sorter = this.setUpSorter(a, b);
+        sorter *= -1;
         return sorter;
     }
 
     handleClick = async event => {
         event.preventDefault();
+
+        let thisIsTheWay = [];
         if (this.state.filteredResults[0].name.last.startsWith("A")){
-            await this.setState({filteredResults: this.state.results.sort(this.sortMeDown)});
+            thisIsTheWay = this.sortMeDown;
         } else {
-            await this.setState({filteredResults: this.state.results.sort(this.sortMeUp)});
+            thisIsTheWay = this.sortMeUp;
         }
+
+        await this.setState({filteredResults: this.state.results.sort(thisIsTheWay)});
     }
 
     handleInputChange = async event => {
         event.preventDefault();
-
-        await this.setState({filteredResults: this.state.results.filter(employee => employee.name.first.toLowerCase().includes(event.target.value.toLowerCase()) || employee.name.last.toLowerCase().includes(event.target.value.toLowerCase()))});
+        
+        let currentSearch = event.target.value;
+        await this.setState({
+            filteredResults: this.state.results.filter(employee => 
+                employee.name.first.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                employee.name.last.toLowerCase().includes(event.target.value.toLowerCase())
+            )
+        });
     };
 
     render() {
