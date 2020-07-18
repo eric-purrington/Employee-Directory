@@ -4,8 +4,8 @@ import "./style.css";
 function Employee(props) {
     let thisDOB = new Date(props.dob);
     return(
-        <tr>
-            <td><img src={props.image} alt="employee's thumbnail"></img></td>
+        <tr className="tableRow">
+            <th scope="row"><img src={props.image} alt="employee's thumbnail"></img></th>
             <td>{props.name}</td>
             <td>{props.phone}</td>
             <td><a href="#">{props.email}</a></td>

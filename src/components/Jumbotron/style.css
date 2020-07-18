@@ -1,0 +1,12 @@
+.jumbotron {
+    background-color: #b4f1f1;
+    margin-bottom: 5px;
+}
+
+.container {
+    color: #1e6262;
+    display: flex;
+    justify-content: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+

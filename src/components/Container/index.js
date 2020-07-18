@@ -2,7 +2,6 @@ import React from "react";
 import Jumbotron from "../Jumbotron";
 import Search from "../Search";
 import Table from "../Table";
-import "./style.css";
 
 function Container(props) {
     return (

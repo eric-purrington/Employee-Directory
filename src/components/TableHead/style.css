@@ -1,4 +1,10 @@
-/* th i {
-    height: 20px !important;
-    width: 20px !important;
-} */
+tr:hover {
+    background-color: white;
+}
+
+button {
+    border: 0px;
+    background-color: white;
+    color: blue;
+    font-size: 12px;
+}

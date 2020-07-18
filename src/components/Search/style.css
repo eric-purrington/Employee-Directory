@@ -1,0 +1,15 @@
+.searchBoxHolder {
+    display: flex;
+    justify-content: center;
+    background-color: #ecfffb;
+    padding: 10px;
+    margin-bottom: 32px;
+}
+
+.input-group {
+    max-width: 200px;
+}
+
+.form-control {
+    margin: 12px;
+}

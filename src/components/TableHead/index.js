@@ -4,11 +4,11 @@ import "./style.css";
 function TableHead(props) {
     return(
         <tr>
-            <th>Image</th>
-            <th>Name <span onClick={props.handleClick}>sortbylast</span></th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>DOB</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name <button onClick={props.handleClick}>sortbylast</button></th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">DOB</th>
         </tr>
     );
 }
