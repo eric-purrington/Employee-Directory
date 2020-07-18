@@ -4,12 +4,12 @@ import Employee from "../Employee";
 import EmployeeContext from "../../utils/EmployeeContext";
 import "./style.css";
 
-function Table() {
+function Table(props) {
     const { filteredResults } = useContext(EmployeeContext);
     return(
         <table>
             <tbody>
-                <TableHead />
+                <TableHead handleClick={props.handleClick}/>
                 {filteredResults.map(employee => (
                     <Employee
                     key={employee.cell}

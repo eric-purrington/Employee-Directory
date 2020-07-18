@@ -9,7 +9,7 @@ function Container(props) {
         <div className="container-fluid">
             <Jumbotron />
             <Search handleInputChange={props.handleInputChange} />
-            <Table />
+            <Table handleClick={props.handleClick}/>
         </div>
     );
 }

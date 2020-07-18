@@ -19,6 +19,41 @@ class Directory extends Component {
         .catch(err => console.log(err));
     }
 
+    sortMeUp = (a, b) => {
+        const nameA = a.name.last.toLowerCase();
+        const nameB = b.name.last.toLowerCase();
+        let sorter = 0;
+        
+        if(nameA > nameB) {
+            sorter = 1;
+        } else if(nameA < nameB) {
+            sorter = -1;
+        }
+        return sorter;
+    }
+
+    sortMeDown = (a, b) => {
+        const nameA = a.name.last.toLowerCase();
+        const nameB = b.name.last.toLowerCase();
+        let sorter = 0;
+        
+        if(nameA > nameB) {
+            sorter = -1;
+        } else if(nameA < nameB) {
+            sorter = 1;
+        }
+        return sorter;
+    }
+
+    handleClick = async event => {
+        event.preventDefault();
+        if (this.state.filteredResults[0].name.last.startsWith("A")){
+            await this.setState({filteredResults: this.state.results.sort(this.sortMeDown)});
+        } else {
+            await this.setState({filteredResults: this.state.results.sort(this.sortMeUp)});
+        }
+    }
+
     handleInputChange = async event => {
         event.preventDefault();
 
@@ -28,7 +63,7 @@ class Directory extends Component {
     render() {
         return (
             <EmployeeContext.Provider value={this.state} >
-                <Container handleInputChange={this.handleInputChange} />
+                <Container handleInputChange={this.handleInputChange} handleClick={this.handleClick} />
             </EmployeeContext.Provider>
         );
     }
